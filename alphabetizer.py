@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from sys import argv
+from sys import argv, stdin, stdout
 
+'''
 def _merge_sort(input_string):
-    ''' Perform a stable recursive merge sort on the given string '''
+    # Perform a stable recursive merge sort on the given string
 
     sublist_len = len(input_string)
 
@@ -15,7 +16,7 @@ def _merge_sort(input_string):
         # Sublist with one element reached
 
         # Count non-alphanumeric characters as empty strings.
-        return input_string if input_string[0].isalpha() else ''
+        return input_string if input_string.isalpha() else ''
     
     # Split the sublist recursively
     mid_index = sublist_len // 2
@@ -57,15 +58,22 @@ def _merge_sort(input_string):
 
     return merged
 
-def alphabetize(input_string):
-    ''' Alphabetize the characters in the given string using merge sort '''
-    return _merge_sort(input_string)
 
-#def alphabetize(input_str):
-#    ''' Alphabetize the characters in the given string using TimSort '''
-#    return "".join(
-#        sorted([char for char in input_str if char.isalpha()], key=str.lower)
-#    )
+def alphabetize(input_string):
+    # Alphabetize the characters in the given string using merge sort
+    return _merge_sort(input_string)
+'''
+
+def alphabetize(input_str):
+    ''' Alphabetize the characters in the given string using TimSort '''
+
+    # Change input_str into a list and remove non-letters in the process
+    # Then do an in-place sort (saves memory) by comparing the letters
+    # based on their lowercase values
+    filtered_list = [char for char in input_str if char.isalpha()]
+    filtered_list.sort(key = str.lower)
+
+    return "".join(filtered_list)
 
 if __name__ == "__main__":
     if len(argv) > 1:
@@ -98,7 +106,11 @@ if __name__ == "__main__":
 
     try:
         while True:
-            input_str = input('Enter a string to alphabetize (or CTRL-C to stop): ')
-            print( alphabetize(input_str) )
-    except KeyboardInterrupt:
+            input_str = input("Enter a string to alphabetize (or CTRL-C to stop): ")
+            print(alphabetize(input_str))
+            
+    except (EOFError, KeyboardInterrupt):
+        # EOFError raised when a a file that is piped in as stdin is closed
+        pass
+    finally:
         print("\nExiting...")
