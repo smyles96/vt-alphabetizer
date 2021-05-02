@@ -1,3 +1,5 @@
+![Python 3 Badge](https://img.shields.io/badge/Python-3.x-green)
+
 # Alphabetizer
 
 ### Requirements to Run the Code
