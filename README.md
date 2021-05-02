@@ -2,7 +2,7 @@
 
 ### Requirements to Run the Code
 * Python 3.x is installed on your system
-* The `python3` execuatble is in your systenm path
+* The `python3` executable directory is in your system path
 
 ### Obtaining and Running the Code
 1. Clone this repository
@@ -43,5 +43,5 @@
     Exiting...
     ```
 
-5. To quit, press CTRL+C
+5. To quit, press `CTRL+C`
 6. For help, run the script with extra arguments (ex. `./alphabetize.py help`)
